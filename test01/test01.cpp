@@ -5,6 +5,7 @@
 #include "Myclass.h"
 #include <vector>
 using namespace::std;
+using std::vector;
 
 int main()
 {
@@ -18,6 +19,32 @@ int main()
         cout << c << "\t";
     }
     cout << endl;
+
+    vector<int> v(10, 42);
+    vector<int> v1 = {42, 42, 42};
+
+    vector<int> vp{1, 2, 3, 4, 5, 6, 7};
+    for (unsigned i = 0; i < vp.size() - 1; ++i) {
+        cout << vp[i] + vp[i + 1] << "\t";
+    }
+    cout << "相邻两位数和↑" << endl;
+
+    for (decltype(vp.size()) i = 0; i < (vp.size() + 1) / 2; ++i) {
+        cout << vp[i] + vp[vp.size() - i - 1] << "\t";    
+    }
+    cout << "前后两位数和↑" << endl;
+
+    string s1("some other");
+    if (!s1.empty()) {
+        cout << "execute here" << endl;
+        auto it = s1.begin();
+        *it = toupper(*it);
+        cout << s1 << endl;
+    }
+    for (auto it = s1.begin(); it != s1.end() && !isspace(*it); ++it) {
+        *it = toupper(*it);
+        cout << s1 << endl;
+    }
     
     return 0;
 }
