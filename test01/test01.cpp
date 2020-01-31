@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Myclass.h"
+#include <vector>
 using namespace::std;
 
 int main()
