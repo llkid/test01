@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Myclass.h"
 #include <vector>
+#include "stddef.h"
 using namespace::std;
 using std::vector;
 
@@ -23,7 +24,17 @@ int main()
     vector<int> v(10, 42);
     vector<int> v1 = {42, 42, 42};
 
-    vector<int> vp{1, 2, 3, 4, 5, 6, 7};
+    vector<int> vp{1, 2, 3, 5, 5, 6, 7};
+    vector<int>::iterator it = vp.begin();
+    auto at = vp.end();
+    cout << "at - it --> " << at - it << endl;
+    /*auto it = vp.begin();*/
+    cout << "*(it + 3) --> " << *(it + 3) << endl;
+        
+    while (it != vp.end()) {
+        cout << *it++ << endl;
+    }
+
     for (unsigned i = 0; i < vp.size() - 1; ++i) {
         cout << vp[i] + vp[i + 1] << "\t";
     }
@@ -45,6 +56,26 @@ int main()
         *it = toupper(*it);
         cout << s1 << endl;
     }
+
+    //常量表达式
+    constexpr unsigned size = 42;
+    string strs[size];
+
+    constexpr size_t array_size = 10;
+    int array1[array_size];
+    int array2[array_size];
+    for (auto i = 0; i < array_size; ++i)
+        array1[i] = i;
+    for (auto i = 0; i < array_size; ++i)
+        array2[i] = array1[i];
+
+    int *array3 = new int[3];
+    delete[] array3;
+
+    int num1 = 1, num2 = 2;
+    num1 += num2 * 4;
+    cout << num1 << endl;
+
     
     return 0;
 }
